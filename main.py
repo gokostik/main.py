@@ -1,6 +1,8 @@
 from turtle import *
 import random
 
+import timer
+
 is_draw = True
 gogogo = True
 movespeed = 1
@@ -26,6 +28,7 @@ canvas = screen.getcanvas()
 root = canvas.winfo_toplevel()
 root.overrideredirect(1)
 
+screen.bgcolor(100,100,100)
 textout = Turtle()
 textout.up()
 textout.setpos(-1980/2+50, 1050/2-20)
@@ -34,17 +37,18 @@ textout.write("Q - Heart    W - Flour   ] - Quit", font=("Arial", 16, "normal"))
 move = Turtle()
 
 def showpos():
+    global move, movespeed
     textout.up()
     textout.setpos(-1980 / 2 + 50, 1050 / 2 - 105)
     textout.down()
-    textout.pencolor(255, 255, 255)
-    textout.write("███████████████████████████████", font=("Arial", 24, "normal"))
+    textout.pencolor(100, 100, 100)
+    textout.write("████████████████████████████████████████", font=("Arial", 24, "normal"))
     textout.pencolor(0, 0, 0)
     textout.write(f"{move.pos()} speed {movespeed}", font=("Arial", 24, "normal"))
+    ontimer(showpos, 900)
 
 def tocenter():
     move.setpos(0, 0)
-    showpos()
 
 def kvadrat():
     move.down()
@@ -56,38 +60,42 @@ def kvadrat():
     move.left(90)
     move.forward(150)
     move.up()
-    showpos()
+
+def kvadrat1():
+    move.down()
+    move.forward(150)
+    move.right(90)
+    move.forward(150)
+    move.right(90)
+    move.forward(150)
+    move.right(90)
+    move.forward(150)
+    move.up()
 
 def speedup():
     global movespeed
     movespeed = movespeed+1
     move.speed(movespeed)
-    showpos()
 
 def speeddown():
     global movespeed
     movespeed = movespeed-1
     move.speed(movespeed)
-    showpos()
 
 def k0():
     quit()
 
 def k1():
     move.forward(5)
-    showpos()
 
 def k2():
     move.left(5)
-    showpos()
 
 def k3():
     move.right(5)
-    showpos()
 
 def k4():
     move.back(5)
-    showpos()
 
 def k5():
     move.down()
@@ -98,7 +106,6 @@ def k5():
     move.circle(50,200)
     move.forward(105)
     move.up()
-    showpos()
 
 def k6():
     global gogogo, n
@@ -110,11 +117,10 @@ def k6():
 
     while (n < 1000) and (gogogo):
         listen()
-        showpos()
         textout.up()
         textout.setpos(-1980 / 2 + 50, 1050 / 2 - 70)
         textout.down()
-        textout.pencolor(255,255,255)
+        textout.pencolor(100,100,100)
         textout.write( "██████ [get some bread]", font=("Arial", 24, "normal"))
         textout.pencolor(0,0,0)
         textout.write(n, font=("Arial", 24, "normal"))
@@ -146,7 +152,7 @@ def k00():
 
 def fxn(x, y):
     move.goto(x, y)
-    move.write(str(x) + "," + str(y))
+#    move.write(str(x) + "," + str(y))
     showpos()
 
 
@@ -163,41 +169,11 @@ onkeypress(k5, "q")
 onkeypress(k6, "w")
 onkeypress(k7, "space")
 onkeypress(kvadrat, "s")
+onkeypress(kvadrat1, "d")
 onkeypress(tocenter, "z")
 onkeypress(showpos, "p")
 onkeypress(screen.reset, "/")
-
-
-
-
+ontimer(showpos, 50)
 
 listen()
 mainloop()
-
-while True:
-    timy.begin_fill()
-    timy.left(45)
-    timy.forward(105)
-    timy.circle(50,200)
-    timy.right(125)
-    timy.circle(50,200)
-    timy.forward(105)
-    timy.up()
-
-    timy.forward(200)
-    timy.down()
-
-    timy.circle(50, 201)
-    timy.right(129)
-    timy.circle(50, 201)
-    timy.right(129)
-    timy.circle(50, 201)
-    timy.right(129)
-    timy.circle(50, 201)
-    timy.right(129)
-    timy.circle(50, 201)
-
-    timy.up()
-
-    timy.forward(200)
-    timy.down()
