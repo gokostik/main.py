@@ -77,7 +77,7 @@ def k6():
     while (n < 1000) and (gogogo):
         listen()
         textout.pencolor(255,255,255)
-        textout.write( "██████", font=("Arial", 24, "normal"))
+        textout.write( "██████ [get some bread]", font=("Arial", 24, "normal"))
         textout.pencolor(0,0,0)
         textout.write(n, font=("Arial", 24, "normal"))
         move.down()
