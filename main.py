@@ -146,9 +146,11 @@ def k00():
 
 def fxn(x, y):
     move.goto(x, y)
+    move.write(str(x) + "," + str(y))
     showpos()
 
-onclick(fxn)
+
+screen.onclick(fxn)
 onkeypress(k0, "]")
 onkeypress(k00, "[")
 onkeypress(speedup, ".")
